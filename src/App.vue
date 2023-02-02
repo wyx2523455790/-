@@ -1,16 +1,23 @@
 <script setup lang="ts">
-import { Button as VanButton } from 'vant'
+import { useUserStore } from './stores'
+
+const store = useUserStore()
 </script>
 
 <template>
-  <!-- 验证vant颜色被覆盖 -->
-  <van-button type="primary">按钮</van-button>
-  <a href="#">123</a>
+  <p>{{ store.user }}</p>
+  <button
+    @click="
+      store.setUser({
+        id: '1',
+        mobile: '1',
+        account: '1',
+        avatar: '1',
+        token: '1'
+      })
+    "
+  >
+    登录
+  </button>
+  <button @click="store.delUser()">退出</button>
 </template>
-
-<style scoped lang="scss">
-// 使用 css 变量
-a {
-  color: var(--cp-primary);
-}
-</style>
